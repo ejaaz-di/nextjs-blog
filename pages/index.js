@@ -2,13 +2,12 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Header from '../components/header'
 import blogData from '../components/blogData'
+import Blog from '../components/blog'
 
 export default function Home() {
-
   const blogComponent = blogData.map(blog => {
     return (
-      console.log(blog.id,blog.title,blog.image,blog.author,blog.publishDate),
-      <h1>{blog.title}</h1>
+      <Blog blogDetails={blog} key={blog.id} />
     )
   })
 
@@ -17,12 +16,14 @@ export default function Home() {
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"></link>
       </Head>
       <Header />
 
       <main className={styles.main}>
-        {blogComponent}
-
+        <div className="flex flex-wrap mx-5">
+          {blogComponent}
+        </div>
       </main>
 
       <footer className={styles.footer}>
