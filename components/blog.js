@@ -1,4 +1,4 @@
-import react from 'react'
+import Link from 'next/link'
 
 function Blog(props) {
     return(
@@ -8,12 +8,14 @@ function Blog(props) {
                 </div>
                 <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                     <div className="mb-8">
-                    
+                    <Link href={"/posts/"+props['blogDetails']['id']}><a>
                     <div className="text-gray-900 font-bold text-xl mb-2 flex justify-between">{props['blogDetails']['title']}
                         <span className="table bg-orange-600 text-xs uppercase px-2 py-1 rounded-full border border-gray-200 text-gray-200 font-bold" style={{display: props['blogDetails']['isFeatured'] == 0 && "none"}}>
                             Featured
                         </span>
                     </div>
+                    </a>
+                    </Link>
                     <p className="text-gray-700 text-base">{props['blogDetails']['content']}</p>
                     </div>
                     <div className="flex items-center">
